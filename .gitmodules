@@ -1,0 +1,12 @@
+[submodule "Unstoppable/lib/forge-std"]
+	path = Unstoppable/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "Unstoppable/lib/solmate"]
+	path = Unstoppable/lib/solmate
+	url = https://github.com/transmissions11/solmate
+[submodule "Unstoppable/lib/solady"]
+	path = Unstoppable/lib/solady
+	url = https://github.com/vectorized/solady
+[submodule "Unstoppable/lib/openzeppelin-contracts"]
+	path = Unstoppable/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
