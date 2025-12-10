@@ -156,6 +156,8 @@ And that way, both our tests pass and the `checkSolvedByPlayer()`  modifier that
 
 # Conclusion
 
-That was it for `Unstoppable` challenge from `Damn Vulnerable DeFi` series. See you next time~
+That was it for `Unstoppable` challenge from `Damn Vulnerable DeFi` series.
 
 You can find through [this github link the repository that contains my solver](https://github.com/kujen5/Damn-Vulnerable-Defi-Solutions/tree/main/Unstoppable) and all the future Damn Vulnerable DeFi solutions Inshallah!
+
+See you next time~
