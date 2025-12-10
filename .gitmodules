@@ -10,3 +10,6 @@
 [submodule "Unstoppable/lib/openzeppelin-contracts"]
 	path = Unstoppable/lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "Naive Receiver/lib/forge-std"]
+	path = Naive Receiver/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
