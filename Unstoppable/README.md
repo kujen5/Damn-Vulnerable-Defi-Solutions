@@ -1,14 +1,3 @@
----
-title: 'Damn Vulnerable DeFi V4: Unstoppable'
-categories:
-  - [Damn Vulnerable DeFi]
-  - [Blockchain/Web3]
-date: 2025-12-10 16:17:13
-tags:
----
-
-
-
 # Overview
 
 Hello everyone! Hope you are doing fantastic!
