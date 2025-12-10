@@ -1,3 +1,12 @@
+---
+title: 'Damn Vulnerable DeFi V4: Unstoppable'
+categories:
+  - [Damn Vulnerable DeFi]
+  - [Blockchain/Web3]
+date: 2025-12-10 16:17:13
+tags:
+---
+
 
 
 # Overview
@@ -9,6 +18,7 @@ This is Foued SAIDI (0xkujen), senior pentester and a wannabe Web3/Blockhain Sec
 Today I am launching the [Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/) series created by [The Red Guild](https://theredguild.org/) where I will be explaining in depth each challenge, my approach to solving it and my solutions.
 
 Hope you enjoy it and learn something new!
+
 
 # 'Unstoppable' challenge
  
@@ -22,6 +32,8 @@ Starting with 10 DVT tokens in balance, show that it’s possible to halt the va
 
 [Link to the original challenge](https://www.damnvulnerabledefi.xyz/challenges/unstoppable/)
 
+[Github repo link that contains challenge code and solver](https://github.com/kujen5/Damn-Vulnerable-Defi-Solutions/tree/main/Unstoppable)
+
 # Understanding the contracts
 
 ## Overview
@@ -33,7 +45,8 @@ We have 3 main contracts
 This is the definition contract of the Damn Valuable Token (DVT): an [ERC20()](https://ethereum.org/developers/docs/standards/tokens/erc-20/) token that will be the currency (token) in this project.
 
 We can see that this token has 18 decimals 
-```solidity
+
+```javascript
 contract DamnValuableToken is ERC20 {
     constructor() ERC20("DamnValuableToken", "DVT", 18) {
         _mint(msg.sender, type(uint256).max);
@@ -118,7 +131,7 @@ That way, we deny the vault from providing flash loans.
 
 The test case would be very simple, a direct `1 DVT` transfer:
 
-```solidity
+```javascript
 function test_unstoppable() public checkSolvedByPlayer {
         console.log("Vault balance before transfer: ",vault.totalAssets());
         token.transfer(address(vault), 1e18);
@@ -129,7 +142,7 @@ function test_unstoppable() public checkSolvedByPlayer {
 
 The output would be:
 
-```solidity
+```javascript
 $ forge test -vv
 [⠊] Compiling...
 [⠑] Compiling 1 files with Solc 0.8.25
@@ -150,6 +163,10 @@ Ran 1 test suite in 104.77ms (12.02ms CPU time): 2 tests passed, 0 failed, 0 ski
 
 And that way, both our tests pass and the `checkSolvedByPlayer()`  modifier that runs the `_isSolved()` function goes through. Marking the successful solve of the challenge.
 
+
+
 # Conclusion
 
 That was it for `Unstoppable` challenge from `Damn Vulnerable DeFi` series. See you next time~
+
+You can find through [this github link the repository that contains my solver](https://github.com/kujen5/Damn-Vulnerable-Defi-Solutions/tree/main/Unstoppable) and all the future Damn Vulnerable DeFi solutions Inshallah!
