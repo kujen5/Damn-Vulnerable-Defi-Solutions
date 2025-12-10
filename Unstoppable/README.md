@@ -6,7 +6,7 @@ Hello everyone! Hope you are doing fantastic!
 
 This is Foued SAIDI (0xkujen), senior pentester and a wannabe Web3/Blockhain Security Researcher.
 
-Today I am launching the [Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/) series where I will be explaining in depth each challenge, my approach to solving it and my solutions.
+Today I am launching the [Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/) series created by [The Red Guild](https://theredguild.org/) where I will be explaining in depth each challenge, my approach to solving it and my solutions.
 
 Hope you enjoy it and learn something new!
 
