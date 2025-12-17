@@ -13,3 +13,12 @@
 [submodule "Naive Receiver/lib/forge-std"]
 	path = Naive Receiver/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "Naive Receiver/lib/openzeppelin-contracts"]
+	path = Naive Receiver/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "Naive Receiver/lib/solmate"]
+	path = Naive Receiver/lib/solmate
+	url = https://github.com/transmissions11/solmate
+[submodule "Naive Receiver/lib/solady"]
+	path = Naive Receiver/lib/solady
+	url = https://github.com/Vectorized/solady
