@@ -83,6 +83,9 @@ contract NaiveReceiverPool is Multicall, IERC3156FlashLender {
         totalDeposits += amount;
     }
 
+    //audit - a user can craft a tx that comes from a trusted forwarder bad can alter the address
+    // (last 20 bytes) to any account controlled by attacker.
+    // => impresonate accounts and perform a withdraw on their behalf
     function _msgSender() internal view override returns (address) {
         if (msg.sender == trustedForwarder && msg.data.length >= 20) {
             return address(bytes20(msg.data[msg.data.length - 20:]));

@@ -12,6 +12,9 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
         pool = _pool;
     }
 
+    //audit - the address (initiator of flash loan) from the flash loan is not being used/validated. 
+    // anyone can request flashloans on behalf of the contract also making the contract pay the fees
+    // => drain money through fees
     function onFlashLoan(address, address token, uint256 amount, uint256 fee, bytes calldata)
         external
         returns (bytes32)
@@ -38,7 +41,7 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
 
         return keccak256("ERC3156FlashBorrower.onFlashLoan");
     }
-
+ 
     // Internal function where the funds received would be used
     function _executeActionDuringFlashLoan() internal {}
 }

