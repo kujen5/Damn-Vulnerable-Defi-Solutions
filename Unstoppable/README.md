@@ -45,7 +45,7 @@ contract DamnValuableToken is ERC20 {
 
 ### UnstoppableVault.sol
 
-This will be the [ERC4626](https://ethereum.org/developers/docs/standards/tokens/erc-4626) vault tha will be managing [flash loans](https://eips.ethereum.org/EIPS/eip-3156) flash loans through the `UnstoppableVault::flashLoan()` function:
+This will be the [ERC4626](https://ethereum.org/developers/docs/standards/tokens/erc-4626) vault that will be managing [flash loans](https://eips.ethereum.org/EIPS/eip-3156) through the `UnstoppableVault::flashLoan()` function:
 
 1. Check if the amount is valid:
 
